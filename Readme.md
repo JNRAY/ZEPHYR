@@ -1,6 +1,6 @@
 # The Zephyr sensor
 Network of sensors monitoring air quality parameters.
-![](00-Ressources/Zephyr-sensor.png)
+![](https://github.com/JNRAY/ZEPHYR/tree/main/00-Resources#:~:text=Zephyr,-%2Dsensor.png)
 
 *The Zéphyr sensor on its demonstration support and in the background of the image the pile of strawberries from the Puylaurens power plant.*
 
