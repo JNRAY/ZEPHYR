@@ -1,6 +1,7 @@
-![](00-Ressources/Logo-Zephyr.png)
+#![](00-Ressources/Logo-Zephyr.png)
 ## Network of sensors monitoring air quality parameters.  
 ![](00-Ressources/Zephyr-sensor.png)
+
 *The Zéphyr sensor on its demonstration support and in the background of the image the pile of strawberries from the Puylaurens power plant.*
 
 The Zéphyr sensor is an instrument that measures up to 9 physical air quality parameters:
