@@ -13,7 +13,7 @@ The Zéphyr sensor is an instrument that measures up to 9 physical air quality p
 * Ambient temperature
 * CO2 content (optional)  
 
-It was developed during the fight against the A69 motorway project (Tarn/Haute-Garonne, Occitanie region in France) to oppose the establishment of two bitumen power plants whose authorities government authorities did not fully appreciate public health and environmental issues.
+It was developed during the fight against the A69 motorway project (Tarn/Haute-Garonne, Occitanie region in France) to oppose the establishment of two bitumen power plants whose authorities government authorities did not fully appreciate public health and environmental issue**s.
 
 The operation was carried out at the initiative of the Lauragais Sans Bitume [LSB](https://www.lauragais-sansbitume.fr/) collective, supported by 11 other local bitumen-free collectives.
 
