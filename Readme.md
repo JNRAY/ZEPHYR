@@ -1,4 +1,4 @@
-#![](00-Ressources/Logo-Zephyr.png)
+![](00-Ressources/Logo-Zephyr.png)
 ## Network of sensors monitoring air quality parameters.  
 ![](00-Ressources/Zephyr-sensor.png)
 
