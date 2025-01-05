@@ -1,0 +1,24 @@
+#!/bin/bash
+# THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES
+#
+# It is highly advisable to create own systemd services or udev rules
+# to run scripts during boot instead of using this file.
+#
+# In contrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure
+# that this script will be executed during boot.
+
+# for proper start of wireguard container
+modprobe ip_tables
+
+# wait for system to finish loading daemons and get rid of startup load
+sleep 15
+
+# restart problematic containers in case of server reboot
+docker restart wireguard
+docker restart mosquitto
+
+# flag for complete/done init
+touch /var/lock/subsys/local

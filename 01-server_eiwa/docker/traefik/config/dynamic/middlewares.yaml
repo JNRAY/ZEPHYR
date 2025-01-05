@@ -1,0 +1,28 @@
+http:
+  middlewares:
+    securityHeaders:
+      headers:
+        customFrameOptionsValue: "SAMEORIGIN"
+        sslRedirect: true
+        framedeny: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+    plvAuth:
+      basicAuth:
+        users:
+          # Generate password with command "htpasswd -nB <TRAEFIK_USER> <TRAEFIK_PASSWORD>"
+          - <TRAEFIK_USER>:<TRAEFIK_PASSWORD_HASH>
+    admin-ipallowlist:
+      ipAllowList:
+        sourceRange:
+          # SSH tunnel
+          - "127.0.0.1/32"
+          # Bridge/interface docker
+          - "10.200.0.0/15"
+          # allow "native" wireguard IPs
+          - "10.8.0.0/24"
+          # Yout local network (if it is trusted !)
+          - "192.168.0.0/24"
+          # Trusted public IPs: uncomment only if nedeed
+          #- "<YOUR_TRUSTED_IP>"

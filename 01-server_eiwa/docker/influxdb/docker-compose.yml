@@ -1,0 +1,24 @@
+networks:
+  traefik:
+    name: traefik
+    external: true
+services:
+  influxdb:
+    image: influxdb:alpine
+    container_name: influxdb
+    hostname: influxdb
+    restart: unless-stopped
+    volumes:
+      - '/home/docker/influxdb/data:/var/lib/influxdb2'
+      - '/home/db_backup/influxdb:/backup'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.influxdb.entrypoints=websecure
+      - traefik.http.routers.influxdb.rule=Host(`influxdb.<YOUR_DOMAIN>`)
+      - traefik.http.routers.influxdb.tls=true
+      - traefik.http.services.influxdb.loadbalancer.server.port=8086
+      - traefik.http.routers.influxdb.tls.certresolver=my_http_resolver
+      - traefik.http.routers.influxdb.middlewares=admin-ipallowlist@file, securityHeaders@file
+      - traefik.docker.network=traefik
+    networks:
+      - traefik

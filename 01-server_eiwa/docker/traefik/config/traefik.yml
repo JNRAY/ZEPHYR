@@ -1,0 +1,50 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+api:
+  dashboard: true
+
+log:
+  level: INFO
+accessLog: {}
+
+providers:
+  docker:
+    exposedbydefault: false
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+entrypoints:
+  websecure:
+    address: ":443"
+    http:
+      middlewares:
+        - addreqheaders@file
+    forwardedHeaders:
+      insecure: true
+    http2:
+      maxConcurrentStreams: 250
+  # Don't comment plain HTTP: it is used to obtain certs
+  web:
+    address: ":80"
+    http:
+
+certificatesResolvers:
+  my_http_resolver:
+    acme:
+      httpChallenge:
+        entrypoint: web
+      email: <YOUR_LETENCRYPT_USER_EMAIL>
+      storage: "/letsencrypt/acme.json"
+
+tls:
+  options:
+    default:
+      minVersion: "VersionTLS12"
+      cipherSuites:
+        - "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305"
+        - "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"

@@ -1,0 +1,45 @@
+networks:
+  traefik:
+    name: traefik
+    external: true
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    hostname: grafana
+    restart: unless-stopped
+    user: "472"
+    ports:
+      - '3000:3000'
+    volumes:
+      - '/home/docker/grafana/data:/var/lib/grafana'
+    extra_hosts:
+      - "influxdb.<YOUR_DOMAIN>:10.200.0.1"
+    environment:
+      - GF_SERVER_ROOT_URL=https://air-quality.<YOUR_DOMAIN>/
+      - GF_DEFAULT_INSTANCE_NAME=LSB - Grafana
+      - GF_INSTALL_PLUGINS=vaduga-mapgl-panel,felixrelleum-geomapwms-panel
+      - GF_LOG_MODE=console
+      # Uncomment below lines to enable SMTP server conf, in case you want to send alerts notifications
+      #- GF_SMTP_ENABLED=true
+      #- GF_SMTP_HOST=<SMTP_SERVER_IP>:<SMTP_SERVER_PORT>
+      #- GF_SMTP_USER=Grafana
+      #- GF_SMTP_FROM_NAME=Grafana
+      #- GF_SMTP_FROM_ADDRESS=<SMTP_SENDER_EMAIL>
+      # Uncomment 3 lines below to allow anonymous viewer access to Grafana WebUI
+      #- GF_AUTH_ANONYMOUS_ENABLED=true
+      #- GF_AUTH_ANONYMOUS_ORG_NAME=<GRAFANA_ORGANIZATION_NAME>
+      #- GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_RENDERING_SERVER_URL=http://10.200.0.1:8081/render
+      - GF_RENDERING_CALLBACK_URL=http://10.200.0.1:3000/
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.grafana.entrypoints=websecure
+      - traefik.http.routers.grafana.rule=Host(`air-quality.<YOUR_DOMAIN>`)
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.services.grafana.loadbalancer.server.port=3000
+      - traefik.http.routers.grafana.tls.certresolver=my_http_resolver
+      - traefik.http.routers.grafana.middlewares=securityHeaders@file
+      - traefik.docker.network=traefik
+    networks:
+      - traefik

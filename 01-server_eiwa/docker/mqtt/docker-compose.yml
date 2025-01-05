@@ -1,0 +1,56 @@
+networks:
+  mqtt:
+    name: mqtt
+  traefik:
+    name: traefik
+    external: true
+services:
+  telegraf-sensor:
+    image: telegraf:alpine
+    container_name: telegraf-sensor
+    hostname: telegraf-sensor
+    restart: unless-stopped
+    volumes:
+      - '/home/docker/mqtt/telegraf-sensor/conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro'
+    networks:
+      - mqtt
+#  telegraf-weather:
+#    image: telegraf:alpine
+#    container_name: telegraf-weather
+#    hostname: telegraf-weather
+#    restart: unless-stopped
+#    volumes:
+#      - '/home/docker/mqtt/telegraf-weather/conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro'
+#    networks:
+#      - mqtt
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    hostname: mosquitto
+    ports:
+      - 1883:1883
+    networks:
+      - mqtt
+    volumes:
+      - /home/docker/mqtt/mosquitto/config:/mosquitto/config
+      - /home/docker/mqtt/mosquitto/data:/mosquitto/data
+      - /home/docker/mqtt/mosquitto/log:/mosquitto/log
+#  emqx:
+#    image: emqx/mqttx-web
+#    container_name: emqx
+#    hostname: emqx
+#    restart: unless-stopped
+#    labels:
+#      - traefik.enable=true
+#      #- traefik.http.routers.emqx.entrypoints=websecure
+#      - traefik.http.routers.emqx.entrypoints=web
+#      - traefik.http.routers.emqx.rule=Host(`emqx.<YOUR_DOMAIN>`)
+#      #- traefik.http.routers.emqx.tls=true
+#      - traefik.http.services.emqx.loadbalancer.server.port=80
+#      #- traefik.http.routers.emqx.tls.certresolver=my_http_resolver
+#      #- traefik.http.routers.emqx.middlewares=admin-ipallowlist@file, securityHeaders@file
+#      - traefik.http.routers.emqx.middlewares=admin-ipallowlist@file
+#      - traefik.docker.network=traefik
+#    networks:
+#      - traefik
+#      - mqtt

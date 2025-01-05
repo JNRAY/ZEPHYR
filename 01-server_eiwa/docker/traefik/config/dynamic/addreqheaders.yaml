@@ -1,0 +1,6 @@
+http:
+  middlewares:
+    addreqheaders:
+      headers:
+        sslProxyHeaders:
+          "X-Forwarded-Proto": "https"

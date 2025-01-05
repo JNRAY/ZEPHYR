@@ -1,0 +1,28 @@
+networks:
+  traefik:
+    name: traefik
+services:
+  traefik:
+    image: traefik:latest
+    restart: unless-stopped
+    container_name: traefik
+    hostname: traefik
+    ports:
+      - 80:80
+      - 443:443
+    command:
+      - --configFile=/etc/traefik/traefik.yml
+    volumes:
+      - /home/docker/traefik/letsencrypt:/letsencrypt
+      - /home/docker/traefik/config/traefik.yml:/etc/traefik/traefik.yml
+      - /home/docker/traefik/config/dynamic/:/etc/traefik/dynamic/
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`traefik.<YOUR_DOMAIN>`)
+      - traefik.http.routers.traefik.entrypoints=websecure
+      - traefik.http.routers.traefik.service=api@internal
+      - traefik.http.routers.traefik.tls.certresolver=my_http_resolver
+      - traefik.http.routers.traefik.middlewares=admin-ipallowlist@file, plvAuth@file, securityHeaders@file
+    networks:
+      - traefik
