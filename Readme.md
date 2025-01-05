@@ -2,11 +2,11 @@
 ## Network of sensors monitoring air quality parameters.  
 ![](00-Ressources/Zephyr-sensor.png)
 
-*The Zéphyr sensor on its demonstration support and in the background of the image the pile of strawberries from the Puylaurens power plant.*
+*The Zéphyr sensor on its demonstration support and in the background of the image the pile of gravel from the Puylaurens power plant.*
 
 The Zéphyr sensor is an instrument that measures up to 9 physical air quality parameters:
 
-* particles from 1 to 10µm: PM1, PM2.5, PM4 and PM10 
+* Particles from 1 to 10µm: PM1, PM2.5, PM4 and PM10 
 * Volatile Organic Compounds VOCs
 * Nitrogen Oxides Nox
 * Air humidity
