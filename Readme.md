@@ -38,6 +38,6 @@ The people involved were able to provide their skills in various areas to make t
 All this without forgetting the contributors who took the step of acquiring a Zéphyr sensor and making the measurements taken by them available.
 THANKS !!
 
-Zéphyr © 2024 LSB under licence CC BY-NC-SA 4.0
+[Zéphyr](https://rhizobiome.gitbook.io/atrosca-degaze) © 2024 [LSB](https://www.lauragais-sansbitume.fr/) under licence CC BY-NC-SA 4.0 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1)
 
 
