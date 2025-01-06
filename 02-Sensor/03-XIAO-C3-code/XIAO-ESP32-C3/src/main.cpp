@@ -11,8 +11,8 @@
   V6        28/07/2024    Integration of SCD30 C02 captor
 
   Copywrigt: 
-    For SEN55 code part: Copyright (c) 2021, Sensirion AG
-    For the other part: Copyright (c) 2024, Jean Noël Raynaud - LSB
+    For SEN55 code part: Copyright (c) 2021, Sensirion AG under the BSD 3-Clause License
+    For the other part: Copyright (c) 2024, Zéphir - LSB under the CC BY-NC-SA 4.0 License
 */
 
 // Librairies
