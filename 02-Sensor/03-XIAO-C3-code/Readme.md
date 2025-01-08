@@ -13,7 +13,7 @@ Launch Vscode.
 
 In Vscode Extension seache and load PlartforIO IDE
 
-Download Zéphyr_XIAO-C3 source code folder and copy in your conputer, open it from PIO Home/Open Project Quick Acess Menu.
+Download XIAO-ESP32-C3 source code folder and copy in your conputer, open it from PIO Home/Open Project Quick Acess Menu.
 
 ## Zéphyr code configuration
 
