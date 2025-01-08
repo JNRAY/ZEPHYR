@@ -171,5 +171,5 @@ To achieve this, stop the wireguard container and edit the `docker/wireguard/dat
 
 ### Configure sensor
 
-Refer to ![ESP32 code repo](02-Sensor/03-XIAO-C3-code) and include VPN keys in header file before compilation and upload firware to ESP32.  
+Refer to [ESP32 code repo](https://github.com/JNRAY/ZEPHYR/tree/main/02-Sensor/03-XIAO-C3-code#:~:text=03%2DXIAO%2DC3%2D-,code) and include VPN keys in header file before compilation and upload firware to ESP32.  
 When sensor is restarted and configured to connect to a Wifi network, you should be able to see it connecting at MQTT level by looking to **mosquitto** container logs.
