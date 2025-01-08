@@ -1,5 +1,5 @@
 
-# Zéphir XIAO-C3 code installation and Download
+# Zéphyr XIAO-C3 code installation and Download
 
 ## Basic software installation
 

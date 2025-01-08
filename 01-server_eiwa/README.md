@@ -1,6 +1,6 @@
 # LSB Server
 
-_Page describing integration of so-called "LSB server", a solution designed to collect data from air quality sensors based on Sensiron SEN55 and SCD30 sensors driven by an ESP32 SOC_
+_Page describing integration of so-called "LSB server", a solution designed to collect data from air quality sensors based on Sensirion SEN55 and SCD30 sensors driven by an ESP32 SOC_
 
 
 # Foreword
