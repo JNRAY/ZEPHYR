@@ -9,7 +9,7 @@
   V4        26/06/2024    Integration include file for vaiables
   V5        25/07/2024    Modification IP adress of MQTT Server 
   V6        28/07/2024    Integration of SCD30 C02 captor
-  V7        28/01/2025    Adaption for WiFi connection router with only WPA(TKIP/AES) protocol and addition
+  V7        28/01/2025    Adaptation for WiFi connection router with only WPA(TKIP/AES) protocol and addition
                           of timeout for WifiManager AutoConnectAP
 
   Copywrigt: 
@@ -383,7 +383,7 @@ void setup() {
 
   wm.setConfigPortalTimeout(60);
  
-  // reset settings - wipe stored credentials for testing
+  // Reset settings - wipe stored credentials for testing
   // these are stored by the esp library
   
   if (WIFI_RESET) {
