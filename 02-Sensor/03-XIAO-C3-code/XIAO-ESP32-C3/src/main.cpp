@@ -9,6 +9,8 @@
   V4        26/06/2024    Integration include file for vaiables
   V5        25/07/2024    Modification IP adress of MQTT Server 
   V6        28/07/2024    Integration of SCD30 C02 captor
+  V7        28/01/2025    Adaption for WiFi connection router with only WPA(TKIP/AES) protocol and addition
+                          of timeout for WifiManager AutoConnectAP
 
   Copywrigt: 
     For SEN55 code part: Copyright (c) 2021, Sensirion AG under the BSD 3-Clause License
@@ -26,6 +28,8 @@
 #include <SensirionI2cScd30.h>
 #include <WireGuard-ESP32.h>
 #include "time.h"
+#include "math.h"
+
 
 // ******************************************************************************
 // Variable DEBUG put:
@@ -153,8 +157,10 @@ void printLocalTime(){
 
 void restartEps32(String error_message){
   if (DEBUG) {
+    Serial.println();
     Serial.println("Restart ESP32");
     Serial.println(error_message);
+    Serial.println();
   }
   ESP.restart();
 }
@@ -234,7 +240,7 @@ void setup() {
 
   Serial.begin(115200);
 
-  // while (!Serial){} Do not use for XIAO cart
+  // while (!Serial){} // Do not use for XIAO cart
 
   delay(1000);
 
@@ -365,9 +371,17 @@ void setup() {
     Serial.println();
   }
     
-  //WiFiManager, Local intialization. Once its business is done, there is no need to keep it around
+  // WiFiManager, Local intialization. Once its business is done, there is no need to keep it around
   
   WiFiManager wm;
+
+  // For WiFi router with only WPA(TKIP/AES) protocol
+
+  WiFi.setMinSecurity(WIFI_AUTH_WPA_PSK);
+
+  // Set time out fot WiFiManager AutoConnectAP portal 60 second
+
+  wm.setConfigPortalTimeout(60);
  
   // reset settings - wipe stored credentials for testing
   // these are stored by the esp library
@@ -386,9 +400,11 @@ void setup() {
   // then goes into a blocking loop awaiting configuration and will return success result
  
   bool res;
+
   // res = wm.autoConnect(); // auto generated AP name from chipid
   // res = wm.autoConnect("AutoConnectAP"); // anonymous ap
   // res = wm.autoConnect("AutoConnectAP","password"); // password protected ap
+
   res = wm.autoConnect("AutoConnectAP");
   
   if(!res) {
@@ -396,17 +412,21 @@ void setup() {
       Serial.println();
       Serial.println("Failed to connect to WiFI");
       Serial.println("EPS Restart");
+      Serial.print("res = ");
+      Serial.println(res);
       Serial.println();
     }
     ESP.restart();
   } 
   else {
-    //if you get here you have connected to the WiFi
+    //if you get here you are connected to the WiFi
     if (DEBUG) {
       Serial.println();   
       Serial.print("Connected to WiFi network: ");
       Serial.print("Local ESP32 IP: ");
       Serial.println(WiFi.localIP());
+      Serial.print("res = ");
+      Serial.println(res);
       Serial.println();
     }
   }
