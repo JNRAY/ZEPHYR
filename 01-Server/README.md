@@ -53,7 +53,7 @@ Now, just go trough all files, looking for keywords as mentioned earlier in orde
 | Keyword | File | Usage |  
 |---------|------|-------|
 | YOUR_DOMAIN | docker/traefik/docker-compose.yml | The domain name that will be used to host solution |
-| YOUR_LETENCRYPT_USER_EMAIL | docker/traefik/config/traefik.yml | Email of owner that is used for Letsencrypt SSL certificate |
+| YOUR_LETSENCRYPT_USER_EMAIL | docker/traefik/config/traefik.yml | Email of owner that is used for Letsencrypt SSL certificate |
 | TRAEFIK_USER | docker/traefik/config/dynamic/middlewares.yaml | User to connect to Traefik web ui |
 | TRAEFIK_PASSWORD | docker/traefik/config/dynamic/middlewares.yaml | Password for above user |
 | TRAEFIK_PASSWORD | docker/traefik/config/dynamic/middlewares.yaml | Password hash of above password |
