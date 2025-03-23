@@ -36,7 +36,7 @@ certificatesResolvers:
     acme:
       httpChallenge:
         entrypoint: web
-      email: <YOUR_LETENCRYPT_USER_EMAIL>
+      email: <YOUR_LETSENCRYPT_USER_EMAIL>
       storage: "/letsencrypt/acme.json"
 
 tls:
